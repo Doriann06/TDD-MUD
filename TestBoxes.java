@@ -12,8 +12,11 @@ public class TestBoxes{
         Box b =new Box();
         Thing truc1 =new Thing("truc1");
         Thing truc2 =new Thing("truc2");
+        Thing truc3 =new Thing("truc3");
        
         b.add(truc1);
         b.add(truc2);
+        b.contains(truc1);
+        
     }
 }
