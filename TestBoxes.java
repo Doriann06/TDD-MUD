@@ -16,7 +16,10 @@ public class TestBoxes{
        
         b.add(truc1);
         b.add(truc2);
-        b.contains(truc1);
+        assertTrue( b.contains(truc1));
+        assertTrue( b.contains(truc2));
+        assertFalse(b.contains(truc3));
+
         
     }
 }
