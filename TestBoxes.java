@@ -38,4 +38,15 @@ public class TestBoxes{
         assertFalse(b.contains(truc3));
         
     }
+    public void testBoxOpen(){
+        Box b =new Box();
+        Thing truc1 =new Thing("truc1");
+        Thing truc2 =new Thing("truc2");
+        Thing truc3 =new Thing("truc3");
+        assertTrue(b.isOpen());
+        b.close();
+        assertFalse(b.isOpen());
+        b.open();
+        assertTrue(b.isOpen());
+    }
 }
