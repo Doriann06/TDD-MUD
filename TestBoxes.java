@@ -104,4 +104,17 @@ public class TestBoxes{
         b2.actionAdd(truc2);
         b2.actionAdd(truc2);
     }
+    @Test (expected = RuntimeException.class)
+    public void testFind(){
+        Box b=new Box();
+        Thing truc1 =new Thing("truc1",5);
+        Thing truc2 =new Thing("truc2",6);
+        Thing truc3 =new Thing("truc3",12);
+        b.actionAdd(truc1);
+        b.actionAdd(truc2);
+        b.find("truc1");
+        b.find("truc3");
+        b.close();
+        b.find("truc1");  
+    }
 }

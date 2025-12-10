@@ -67,4 +67,10 @@ public class Box{
             else throw new RuntimeException("capacité insuffisante");
         }else throw new RuntimeException("boite fermer");
     }
+    public Thing find(String name){
+        for(int i =0;i<this.contents.size();i++){
+            if (this.contents.get(i).getName()==name) return this.contents.get(i);
+        
+        }
+    }
 }
