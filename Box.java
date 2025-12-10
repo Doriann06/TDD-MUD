@@ -50,4 +50,15 @@ public class Box{
     public int getCapacity(){
         return this.capacity;
     }
+    public boolean hasRoomFor(Thing truc){
+        if (this.capacity==-1) return true;
+        else {
+           int room=this.capacity;
+           for(int i =0;i<this.contents.size();i++){
+                room-=this.contents.get(i).getVolume();
+           }
+           if (room-truc.getVolume()<0) return false;
+           else return true;
+        }
+    }
 }
