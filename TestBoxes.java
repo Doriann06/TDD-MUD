@@ -10,9 +10,9 @@ public class TestBoxes{
     public void testBoxAdd(){
         
         Box b =new Box();
-        Thing truc1 =new Thing("truc1");
-        Thing truc2 =new Thing("truc2");
-        Thing truc3 =new Thing("truc3");
+        Thing truc1 =new Thing("truc1",3);
+        Thing truc2 =new Thing("truc2",3);
+        Thing truc3 =new Thing("truc3",3);
        
         b.add(truc1);
         b.add(truc2);
@@ -25,9 +25,9 @@ public class TestBoxes{
     public void testBoxRemove(){
         
         Box b =new Box();
-        Thing truc1 =new Thing("truc1");
-        Thing truc2 =new Thing("truc2");
-        Thing truc3 =new Thing("truc3");
+        Thing truc1 =new Thing("truc1",3);
+        Thing truc2 =new Thing("truc2",3);
+        Thing truc3 =new Thing("truc3",3);
        
         b.add(truc1);
         b.add(truc2);
@@ -42,9 +42,9 @@ public class TestBoxes{
     @Test
     public void testBoxOpen(){
         Box b =new Box();
-        Thing truc1 =new Thing("truc1");
-        Thing truc2 =new Thing("truc2");
-        Thing truc3 =new Thing("truc3");
+        Thing truc1 =new Thing("truc1",3);
+        Thing truc2 =new Thing("truc2",3);
+        Thing truc3 =new Thing("truc3",3);
         assertTrue(b.isOpen());
         b.close();
         assertFalse(b.isOpen());
@@ -54,14 +54,31 @@ public class TestBoxes{
     @Test
     public void testActionLook(){
         Box b =new Box();
-        Thing truc1 =new Thing("truc1");
-        Thing truc2 =new Thing("truc2");
-        Thing truc3 =new Thing("truc3");
+        Thing truc1 =new Thing("truc1",3);
+        Thing truc2 =new Thing("truc2",3);
+        Thing truc3 =new Thing("truc3",3);
        
         b.add(truc1);
         b.add(truc2);
         assertEquals("la boite contient: truc1, truc2",b.actionLook());
         b.close();
         assertEquals("la boite est fermee",b.actionLook());
+    }
+    @Test
+    public void testVolume(){
+        Thing truc1 =new Thing("truc1",3);
+        Thing truc2 =new Thing("truc2",6);
+        Thing truc3 =new Thing("truc3",12);
+       
+        assertEquals(3, truc1.getVolume());
+        assertEquals(6, truc2.getVolume());
+        assertEquals(12, truc3.getVolume());
+    }
+    @Test
+    public void testCapacity(){
+        Box b=new Box();
+        Box b2=new Box(10);
+        assertEquals(-1, b.getCapacity());
+        assertEquals(10, b2.getCapacity());
     }
 }

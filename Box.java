@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 public class Box{
     private ArrayList<Thing>contents= new ArrayList<>();
-    public boolean isOpen=true;
+    private boolean isOpen=true;
+    private int capacity=-1;
     Box(){
         System.out.println("Box créée !");
+    }
+    public Box (int capacity){
+        this.capacity=capacity;
     }
     public void add(Thing truc){
         contents.add(truc);
@@ -43,4 +47,7 @@ public class Box{
 
         }
     } 
+    public int getCapacity(){
+        return this.capacity;
+    }
 }
