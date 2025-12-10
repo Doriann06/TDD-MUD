@@ -51,7 +51,7 @@ public class Box{
         return this.capacity;
     }
     public boolean hasRoomFor(Thing truc){
-        if (this.capacity==-1) return true;
+        if (this.capacity==-1) return true;// capacité infini
         else {
            int room=this.capacity;
            for(int i =0;i<this.contents.size();i++){
@@ -60,5 +60,11 @@ public class Box{
            if (room-truc.getVolume()<0) return false;
            else return true;
         }
+    }
+    public void actionAdd(Thing truc){
+        if (this.isOpen()){
+            if (this.hasRoomFor(truc)) this.add(truc);
+            else throw new RuntimeException("capacité insuffisante");
+        }else throw new RuntimeException("boite fermer");
     }
 }

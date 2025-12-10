@@ -42,9 +42,6 @@ public class TestBoxes{
     @Test
     public void testBoxOpen(){
         Box b =new Box();
-        Thing truc1 =new Thing("truc1",3);
-        Thing truc2 =new Thing("truc2",3);
-        Thing truc3 =new Thing("truc3",3);
         assertTrue(b.isOpen());
         b.close();
         assertFalse(b.isOpen());
@@ -56,8 +53,7 @@ public class TestBoxes{
         Box b =new Box();
         Thing truc1 =new Thing("truc1",3);
         Thing truc2 =new Thing("truc2",3);
-        Thing truc3 =new Thing("truc3",3);
-       
+    
         b.add(truc1);
         b.add(truc2);
         assertEquals("la boite contient: truc1, truc2",b.actionLook());
@@ -93,5 +89,19 @@ public class TestBoxes{
         assertTrue(b2.hasRoomFor(truc3));
         b.add(truc1);
         assertFalse(b.hasRoomFor(truc2));
+    }
+    @Test (expected =  RuntimeException.class)
+    public void testActionAdd(){
+        Box b=new Box(10);
+        Box b2=new Box();
+        Thing truc1 =new Thing("truc1",5);
+        Thing truc2 =new Thing("truc2",6);
+        Thing truc3 =new Thing("truc3",12);
+        b.actionAdd(truc1);
+        b.actionAdd(truc3);
+        b2.actionAdd(truc3);
+        b2.close();
+        b2.actionAdd(truc2);
+        b2.actionAdd(truc2);
     }
 }
