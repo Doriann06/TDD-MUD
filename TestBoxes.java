@@ -21,7 +21,7 @@ public class TestBoxes{
         assertFalse(b.contains(truc3));
         
     }
-    @Test
+    @Test (expected =  RuntimeException.class)
     public void testBoxRemove(){
         
         Box b =new Box();
@@ -32,12 +32,14 @@ public class TestBoxes{
         b.add(truc1);
         b.add(truc2);
         b.remove(truc2);
-        b.remove(truc3);
         assertTrue( b.contains(truc1));
         assertFalse(b.contains(truc2));
         assertFalse(b.contains(truc3));
+        b.remove(truc3);
+    
         
     }
+    @Test
     public void testBoxOpen(){
         Box b =new Box();
         Thing truc1 =new Thing("truc1");
@@ -48,5 +50,18 @@ public class TestBoxes{
         assertFalse(b.isOpen());
         b.open();
         assertTrue(b.isOpen());
+    }
+    @Test
+    public void testActionLook(){
+        Box b =new Box();
+        Thing truc1 =new Thing("truc1");
+        Thing truc2 =new Thing("truc2");
+        Thing truc3 =new Thing("truc3");
+       
+        b.add(truc1);
+        b.add(truc2);
+        assertEquals("la boite contient: truc1, truc2",b.actionLook());
+        b.close();
+        assertEquals("la boite est fermee",b.actionLook());
     }
 }

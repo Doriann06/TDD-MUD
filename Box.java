@@ -15,11 +15,10 @@ public class Box{
         return this.contents.contains(truc);
     }
     public void remove(Thing truc){
+        boolean ok=this.contents.contains(truc);
+        if(!ok) throw new RuntimeException("remove impossible");
         contents.remove(truc);
-        if(this.contents.contains(truc)==false){
-            new Exception("truc n'est pas dans liste");
-
-        }
+        
     }
     public boolean isOpen(){
         return this.isOpen;
@@ -30,4 +29,18 @@ public class Box{
     public void close(){
         this.isOpen=false;
     }
+    public String actionLook(){
+        if(this.isOpen==false) return "la boite est fermee";
+        else{
+            String look;
+            look="la boite contient: ";
+            for(int i =0;i<this.contents.size();i++){
+                
+                look+= this.contents.get(i).getName();
+                if (i!= this.contents.size()-1) look+=", ";
+            }
+            return look;
+
+        }
+    } 
 }
