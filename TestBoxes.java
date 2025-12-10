@@ -81,4 +81,17 @@ public class TestBoxes{
         assertEquals(-1, b.getCapacity());
         assertEquals(10, b2.getCapacity());
     }
+    @Test
+    public void testHasRoomFor(){
+        Box b=new Box(10);
+        Box b2=new Box();
+        Thing truc1 =new Thing("truc1",5);
+        Thing truc2 =new Thing("truc2",6);
+        Thing truc3 =new Thing("truc3",12);
+        assertTrue(b.hasRoomFor(truc1));
+        assertFalse(b.hasRoomFor(truc3));
+        assertTrue(b2.hasRoomFor(truc3));
+        b.add(truc1);
+        assertFalse(b.hasRoomFor(truc2));
+    }
 }
